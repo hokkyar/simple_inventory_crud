@@ -17,7 +17,14 @@
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
     @endif
-    <a href="/transaksi/create" class="btn btn-success"><i class="bi bi-plus-circle"></i> Tambah Transaksi</a>
+
+    @if (count($barang) == 0 || count($karyawan) == 0)
+        <button class="btn btn-success" disabled><i class="bi bi-plus-circle"></i> Tambah Transaksi</button>
+        <p></p>
+    @else
+        <a href="/transaksi/create" class="btn btn-success"><i class="bi bi-plus-circle"></i> Tambah Transaksi</a>
+    @endif
+
     <div class="bg-white rounded p-4 my-3">
         <table id="myTable" class="display">
             <thead>

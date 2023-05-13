@@ -12,7 +12,9 @@ class TransaksiController extends Controller
   public function index()
   {
     $transaksi = Transaksi::with('barang')->get();
-    return view('transaksi.index', compact('transaksi'));
+    $barang = Barang::all();
+    $karyawan = Karyawan::all();
+    return view('transaksi.index', compact('transaksi', 'barang', 'karyawan'));
   }
 
   public function create()
