@@ -34,9 +34,9 @@
                             <a class="nav-link active" aria-current="page" href="/transaksi">Transaksi</a>
                         </li>
                     </ul>
-                    <form action="/login" method="POST">
+                    <form action="/logout" method="POST">
                         @csrf
-                        @method('DELETE')
+                        @method('POST')
                         <button type="submit" class="btn btn-danger">Logout</button>
                     </form>
                 </div>
