@@ -27,9 +27,11 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/barang">Barang</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/karyawan">Karyawan</a>
-                        </li>
+                        @if (session('user.role') === 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="/karyawan">Karyawan</a>
+                            </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/transaksi">Transaksi</a>
                         </li>

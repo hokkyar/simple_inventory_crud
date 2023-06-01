@@ -20,6 +20,21 @@ class KaryawanController extends Controller
 
   public function store(Request $request)
   {
+    // nama karyawan minimal 10 karakter dan maksimal 30 karakter
+    $karyawanLength = strlen($request->nama_karyawan);
+    if ($karyawanLength < 10 || $karyawanLength > 30) {
+      return redirect('/karyawan/create')->with('error', 'Nama karyawan minimal 10 karakter dan maksimal 30 karakter');
+    }
+    // email karyawan harus disertakan '@' dan tidak boleh kosong
+    if (strpos($request->email, '@') === false || strlen($request->email) <= 0) {
+      return redirect('/karyawan/create')->with('error', "Email harus disertakan '@' dan tidak boleh kosong");
+    }
+    // nomor telepon minimal 10 karakter dan maksimal 13 karakter
+    $teleponLength = strlen($request->telepon);
+    if ($teleponLength < 10 || $teleponLength > 13) {
+      return redirect('/karyawan/create')->with('error', 'Nomor telepon minimal 10 karakter dan maksimal 13 karakter');
+    }
+
     $karyawan = new Karyawan([
       'nama_karyawan' => $request->nama_karyawan,
       'telepon' => $request->telepon,

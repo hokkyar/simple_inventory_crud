@@ -4,8 +4,6 @@ use App\Http\Controllers\BarangController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\TransaksiController;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,7 +26,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard')->middleware('checkLogin');
 
 Route::resource('barang', BarangController::class)->middleware('checkLogin');
-Route::resource('karyawan', KaryawanController::class)->middleware('checkLogin');
+Route::resource('karyawan', KaryawanController::class)->middleware('checkAdmin');
 Route::resource('transaksi', TransaksiController::class)->middleware('checkLogin');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
